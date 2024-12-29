@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bonheur+Royale&family=Outfit:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html{
+    overflow-x: scroll;
+}
+.logo-1{
+    font-family: "Bebas Neue", serif;
+}
+.logo-2{
+    font-family: "Bonheur Royale", serif;
+}
+body{
+    font-family: "Outfit", serif;
+}
