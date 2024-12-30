@@ -5,7 +5,7 @@ import { Pagination } from "swiper/modules";
 
 const CategoriesSection = () => {
   return (
-    <div className="w-10/12 mx-auto my-10">
+    <div className="w-10/12 mx-auto my-20">
         <div className="text-center my-10 flex flex-col items-center space-y-2">
             <p className="text-zinc-400">11.00 AM - 11.00 PM</p>
             <h2 className="font-semibold text-3xl text-zinc-900 uppercase border-t border-b tracking-wider border-amber-400">Order Line</h2>
