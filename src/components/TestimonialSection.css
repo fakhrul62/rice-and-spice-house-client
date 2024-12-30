@@ -1,0 +1,11 @@
+/* Change the color of the navigation arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ff9900; /* Replace with your desired color */
+}
+
+/* Optional: Adjust hover effect */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #ffcc00; /* Replace with hover color */
+}

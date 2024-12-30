@@ -26,7 +26,7 @@ const FeaturedSection = () => {
               balance of bold spices and refreshing zest. A must-try for those
               seeking a light yet indulgent culinary masterpiece.
             </p>
-            <button className="px-7 py-2 bg-transparent border border-whit text-white rounded-xl">Read more</button>
+            <button className="px-7 py-2 bg-transparent border border-white text-white rounded-xl hover:border-amber-500 duration-300">Read more</button>
           </div>
         </div>
       </div>

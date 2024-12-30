@@ -1,0 +1,62 @@
+[
+    {
+        "_id": "643010e0f5a7e52ce1e8fa66",
+        "name": "John Smith",
+        "details": "The ambiance was wonderful, and the staff was very attentive. However, the main course felt a bit underwhelming compared to the starters.",
+        "rating": 4
+    },
+    {
+        "_id": "643010e0f5a7e52ce1e8fa67",
+        "name": "Emily Johnson",
+        "details": "Absolutely loved the flavors! The Zesty Grilled Beef Salad is a must-try. The portions were generous too.",
+        "rating": 5
+    },
+    {
+        "_id": "643010e0f5a7e52ce1e8fa68",
+        "name": "Michael Brown",
+        "details": "While the food was good, the wait time was too long for a high-end restaurant. The dessert made up for it though!",
+        "rating": 3
+    },
+    {
+        "_id": "643010e0f5a7e52ce1e8fa69",
+        "name": "Sophia Davis",
+        "details": "An extraordinary dining experience! The service was impeccable, and the presentation of the dishes was artful.",
+        "rating": 5
+    },
+    {
+        "_id": "643010e0f5a7e52ce1e8fa70",
+        "name": "Chris Wilson",
+        "details": "The atmosphere is cozy, but the prices seemed a bit steep for the portion sizes. The flavors were on point, though.",
+        "rating": 4
+    },
+    {
+        "_id": "643010e0f5a7e52ce1e8fa71",
+        "name": "Olivia Martinez",
+        "details": "The sushi rolls were fresh and flavorful, but the miso soup was a bit too salty for my liking.",
+        "rating": 4
+    },
+    {
+        "_id": "643010e0f5a7e52ce1e8fa72",
+        "name": "Liam Anderson",
+        "details": "I had high expectations, and they were exceeded! The staff even accommodated my dietary restrictions flawlessly.",
+        "rating": 5
+    },
+    {
+        "_id": "643010e0f5a7e52ce1e8fa73",
+        "name": "Isabella Clark",
+        "details": "The decor and ambiance are stunning, but the food lacked the wow factor I was hoping for. Still worth a visit.",
+        "rating": 3
+    },
+    {
+        "_id": "643010e0f5a7e52ce1e8fa74",
+        "name": "Ethan Moore",
+        "details": "The curry dish was packed with flavor, and the naan bread was perfect. It’s definitely a place I’ll return to.",
+        "rating": 5
+    },
+    {
+        "_id": "643010e0f5a7e52ce1e8fa75",
+        "name": "Mia White",
+        "details": "The menu has a lot of variety, but the service was a bit rushed. The appetizers were the highlight of the meal.",
+        "rating": 4
+    }
+]

@@ -5,6 +5,7 @@ import PopularMenuSection from '../components/PopularMenuSection.';
 import AboutSection from '../components/AboutSection';
 import CTA from '../components/CTA';
 import FeaturedSection from '../components/FeaturedSection';
+import TestimonialSection from '../components/TestimonialSection';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <PopularMenuSection></PopularMenuSection>
             <CTA></CTA>
             <FeaturedSection></FeaturedSection>
+            <TestimonialSection></TestimonialSection>
         </div>
     );
 };
