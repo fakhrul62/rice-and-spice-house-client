@@ -6,7 +6,11 @@
 
 
 html{
-    overflow-x: scroll;
+
+}
+body{
+    width: 100%;
+  overflow-x: hidden;
 }
 .logo-1{
     font-family: "Bebas Neue", serif;
