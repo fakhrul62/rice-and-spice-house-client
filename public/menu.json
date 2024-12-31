@@ -276,7 +276,7 @@
         "name": "Chicken and Walnut Salad",
         "recipe": "Exquisite Pan prepared with the finest ingredients.",
         "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-3-370x247.jpg",
-        "category": "dessert",
+        "category": "popular",
         "price": 13.5
     },
     {
@@ -316,7 +316,7 @@
         "name": "Fish Parmentier",
         "recipe": "Exquisite Saut\u00e9ed prepared with the finest ingredients.",
         "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-8-370x247.jpg",
-        "category": "salad",
+        "category": "popular",
         "price": 9.5
     },
     {

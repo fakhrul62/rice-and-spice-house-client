@@ -6,7 +6,7 @@ const PopularMenuSection = () => {
   const [menus, setMenus] = useState([]);
   useEffect(() => {
     axios.get("menu.json").then((res) => setMenus(res.data.filter((menu) => menu.category === "popular")));
-  }, []);
+  }, [menus]);
   return (
     <div className="w-10/12 mx-auto my-20">
       <div className="text-center my-10 flex flex-col items-center space-y-2">
@@ -15,7 +15,7 @@ const PopularMenuSection = () => {
           Our Menu
         </h2>
       </div>
-      <div className="grid grid-cols-2 gap-5 mt-10">
+      <div className="grid grid-cols-2 gap-x-5 gap-y-10 mt-10">
         {
             menus.map(menu=> <MenuItemCard key={menu._id} menu={menu}></MenuItemCard>)
         }

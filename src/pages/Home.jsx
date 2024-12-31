@@ -14,8 +14,8 @@ const Home = () => {
             <CategoriesSection></CategoriesSection>
             <AboutSection></AboutSection>
             <PopularMenuSection></PopularMenuSection>
-            <CTA></CTA>
             <FeaturedSection></FeaturedSection>
+            <CTA></CTA>
             <TestimonialSection></TestimonialSection>
         </div>
     );
