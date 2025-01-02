@@ -1,12 +1,13 @@
 import Lottie from "lottie-react";
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useParams } from "react-router-dom";
 import logo from "../assets/logo.json";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { PiUserCircleLight } from "react-icons/pi";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -22,7 +23,7 @@ const Header = () => {
   const li = (
     <>
       <NavLink to="/">Home</NavLink>
-      <NavLink>Home</NavLink>
+      <NavLink to="/our-menu">Our Menu</NavLink>
       <NavLink>Home</NavLink>
       <NavLink>Home</NavLink>
       <NavLink>Home</NavLink>
@@ -31,6 +32,7 @@ const Header = () => {
   return (
     <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
       isScrolled ? "bg-zinc-900 shadow-lg" : "bg-transparent"
+      // isScrolled || location.pathname !== "/" ? "bg-zinc-900 shadow-lg" : "bg-transparent"
     }`}>
       <div className="navbar w-10/12 mx-auto">
         <div className="navbar-start">

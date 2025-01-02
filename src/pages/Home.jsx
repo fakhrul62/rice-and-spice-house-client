@@ -6,10 +6,16 @@ import AboutSection from '../components/AboutSection';
 import CTA from '../components/CTA';
 import FeaturedSection from '../components/FeaturedSection';
 import TestimonialSection from '../components/TestimonialSection';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Rice & Spice House</title>
+                <link rel="canonical" href="" />
+            </Helmet>
             <Banner></Banner>
             <CategoriesSection></CategoriesSection>
             <AboutSection></AboutSection>

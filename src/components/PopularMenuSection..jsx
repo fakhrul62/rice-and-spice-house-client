@@ -1,12 +1,9 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import MenuItemCard from "./MenuItemCard";
+import useMenu from "../hooks/useMenu";
 
 const PopularMenuSection = () => {
-  const [menus, setMenus] = useState([]);
-  useEffect(() => {
-    axios.get("menu.json").then((res) => setMenus(res.data.filter((menu) => menu.category === "popular")));
-  }, [menus]);
+  const [menus] = useMenu();
+  const getMenus = menus.filter((menu) => menu.category === "popular");
   return (
     <div className="w-10/12 mx-auto my-20">
       <div className="text-center my-10 flex flex-col items-center space-y-2">
@@ -17,13 +14,14 @@ const PopularMenuSection = () => {
       </div>
       <div className="grid grid-cols-2 gap-x-5 gap-y-10 mt-10">
         {
-            menus.map(menu=> <MenuItemCard key={menu._id} menu={menu}></MenuItemCard>)
+            getMenus.map(menu=> <MenuItemCard key={menu._id} menu={menu}></MenuItemCard>)
         }
       </div>
       <div className="flex justify-center mt-10">
         <button type="button" className="bg-white text-zinc-950 border border-zinc-950 rounded-full px-10 py-3">View Full Menu</button>
       </div>
     </div>
+    
   );
 };
 
