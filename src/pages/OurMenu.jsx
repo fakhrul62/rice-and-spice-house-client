@@ -1,8 +1,11 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Parallax } from "react-parallax";
+import useMenu from "../hooks/useMenu";
+import MenuItemCard from "../components/MenuItemCard";
 
 const OurMenu = () => {
+  const [menus] = useMenu();
   return (
     <div>
       <Helmet>
@@ -19,19 +22,144 @@ const OurMenu = () => {
             Explore our various types of category
           </h3>
         </div>
-        <Parallax
-          bgImage="https://i.ibb.co.com/wRgKxLz/pizza.jpg"
-          className="rounded-xl"
-          strength={100}
-        >
-          <div className="w-10/12 mx-auto py-32 my-32 border border-zinc-900 rounded-xl backdrop-blur-sm">
-            <div>
-              <h2 className="text-center font-bold text-5xl text-white">
-                Pizza
-              </h2>
+        {/* Pizza */}
+        <div className="mt-10">
+          <Parallax
+            bgImage="https://i.ibb.co.com/wRgKxLz/pizza.jpg"
+            className="rounded-xl"
+            strength={100}
+          >
+            <div className="w-10/12 mx-auto py-32 my-32 border border-zinc-900 rounded-xl backdrop-blur-sm">
+              <div>
+                <h2 className="text-center font-bold text-5xl text-white">
+                  Pizza
+                </h2>
+              </div>
             </div>
+          </Parallax>
+          <div className="grid grid-cols-2 gap-x-5 gap-y-10 mt-10">
+            {menus
+              .filter((SingleMenu) => SingleMenu.category === "pizza")
+              .map((menu) => (
+                <MenuItemCard key={menu.id} menu={menu} />
+              ))}
           </div>
-        </Parallax>
+        </div>
+        {/* Soup */}
+        <div className="mt-10">
+          <Parallax
+            bgImage="https://i.ibb.co.com/wRgKxLz/pizza.jpg"
+            className="rounded-xl"
+            strength={100}
+          >
+            <div className="w-10/12 mx-auto py-32 my-32 border border-zinc-900 rounded-xl backdrop-blur-sm">
+              <div>
+                <h2 className="text-center font-bold text-5xl text-white">
+                  Soup
+                </h2>
+              </div>
+            </div>
+          </Parallax>
+          <div className="grid grid-cols-2 gap-x-5 gap-y-10 mt-10">
+            {menus
+              .filter((SingleMenu) => SingleMenu.category === "soup")
+              .map((menu) => (
+                <MenuItemCard key={menu.id} menu={menu} />
+              ))}
+          </div>
+        </div>
+        {/* Offered */}
+        <div className="mt-10">
+          <Parallax
+            bgImage="https://i.ibb.co.com/wRgKxLz/pizza.jpg"
+            className="rounded-xl"
+            strength={100}
+          >
+            <div className="w-10/12 mx-auto py-32 my-32 border border-zinc-900 rounded-xl backdrop-blur-sm">
+              <div>
+                <h2 className="text-center font-bold text-5xl text-white">
+                  Offered
+                </h2>
+              </div>
+            </div>
+          </Parallax>
+          <div className="grid grid-cols-2 gap-x-5 gap-y-10 mt-10">
+            {menus
+              .filter((SingleMenu) => SingleMenu.category === "offered")
+              .map((menu) => (
+                <MenuItemCard key={menu.id} menu={menu} />
+              ))}
+          </div>
+        </div>
+        {/* Salad */}
+        <div className="mt-10">
+          <Parallax
+            bgImage="https://i.ibb.co.com/wRgKxLz/pizza.jpg"
+            className="rounded-xl"
+            strength={100}
+          >
+            <div className="w-10/12 mx-auto py-32 my-32 border border-zinc-900 rounded-xl backdrop-blur-sm">
+              <div>
+                <h2 className="text-center font-bold text-5xl text-white">
+                  Salad
+                </h2>
+              </div>
+            </div>
+          </Parallax>
+          <div className="grid grid-cols-2 gap-x-5 gap-y-10 mt-10">
+            {menus
+              .filter((SingleMenu) => SingleMenu.category === "salad")
+              .map((menu) => (
+                <MenuItemCard key={menu.id} menu={menu} />
+              ))}
+          </div>
+        </div>
+        {/* Drinks */}
+        <div className="mt-10">
+          <Parallax
+            bgImage="https://i.ibb.co.com/wRgKxLz/pizza.jpg"
+            className="rounded-xl"
+            strength={100}
+          >
+            <div className="w-10/12 mx-auto py-32 my-32 border border-zinc-900 rounded-xl backdrop-blur-sm">
+              <div>
+                <h2 className="text-center font-bold text-5xl text-white">
+                  Drinks
+                </h2>
+              </div>
+            </div>
+          </Parallax>
+          <div className="grid grid-cols-2 gap-x-5 gap-y-10 mt-10">
+            {menus
+              .filter((SingleMenu) => SingleMenu.category === "drinks")
+              .map((menu) => (
+                <MenuItemCard key={menu.id} menu={menu} />
+              ))}
+          </div>
+        </div>
+        {/* Dessert */}
+        <div className="mt-10">
+          <Parallax
+            bgImage="https://i.ibb.co.com/wRgKxLz/pizza.jpg"
+            className="rounded-xl"
+            strength={100}
+          >
+            <div className="w-10/12 mx-auto py-32 my-32 border border-zinc-900 rounded-xl backdrop-blur-sm">
+              <div>
+                <h2 className="text-center font-bold text-5xl text-white">
+                  Dessert
+                </h2>
+              </div>
+            </div>
+          </Parallax>
+          <div className="grid grid-cols-2 gap-x-5 gap-y-10 mt-10">
+            {menus
+              .filter((SingleMenu) => SingleMenu.category === "dessert")
+              .map((menu) => (
+                <MenuItemCard key={menu.id} menu={menu} />
+              ))}
+          </div>
+        </div>
       </div>
     </div>
   );
