@@ -15,8 +15,8 @@ const Banner = () => {
     clickable: true,
     renderBullet: function (index, className) {
       return `
-            <span class="${className}">
-              <img src="${slides[index]}" alt="Thumbnail" class="swiper-thumbnail" />
+            <span className="${className}">
+              <img src="${slides[index]}" alt="Thumbnail" className="swiper-thumbnail" />
             </span>
           `;
     },

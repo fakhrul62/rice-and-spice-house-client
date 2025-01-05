@@ -27,10 +27,10 @@ const TestimonialSection = () => {
           {reviews.map((review) => (
             <SwiperSlide key={review._id}>
               <div className="flex flex-col gap-5 items-center justify-center w-10/12 mx-auto">
-                <p className="">
+                <div className="">
                   {" "}
                   <Rating style={{ maxWidth: 180 }} value={review.rating} readOnly />
-                </p>
+                </div>
                 <span className="text-7xl text-zinc-950">
                   <LuMessageSquareQuote />
                 </span>

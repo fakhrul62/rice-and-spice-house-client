@@ -25,7 +25,7 @@ const CategoriesSection = () => {
             <img
               src="https://i.ibb.co.com/4F4s9cf/Chinese-Cuisine.jpg"
               alt=""
-              srcset=""
+              srcSet=""
             />
             <div className="absolute bottom-0 left-1/2 w-full transform -translate-x-1/2 bg-gradient-to-t from-zinc-950 to-transparent text-white py-8 text-center">
                 <h3 className="text-2xl font-bold">Chinese Cuisine</h3>
@@ -37,7 +37,7 @@ const CategoriesSection = () => {
             <img
               src="https://i.ibb.co.com/DCXHdPQ/Indian-Cuisine.jpg"
               alt=""
-              srcset=""
+              srcSet=""
             />
             <div className="absolute bottom-0 left-1/2 w-full transform -translate-x-1/2 bg-gradient-to-t from-zinc-950 to-transparent text-white py-8 text-center">
                 <h3 className="text-2xl font-bold">Indian Cuisine</h3>
@@ -49,7 +49,7 @@ const CategoriesSection = () => {
             <img
               src="https://i.ibb.co.com/4jVc16K/Japanese-Cuisine.jpg"
               alt=""
-              srcset=""
+              srcSet=""
             />
             <div className="absolute bottom-0 left-1/2 w-full transform -translate-x-1/2 bg-gradient-to-t from-zinc-950 to-transparent text-white py-8 text-center">
                 <h3 className="text-2xl font-bold">Japanese Cuisine</h3>
@@ -61,7 +61,7 @@ const CategoriesSection = () => {
             <img
               src="https://i.ibb.co.com/tZBY366/Korean-Cuisine.jpg"
               alt=""
-              srcset=""
+              srcSet=""
             />
             <div className="absolute bottom-0 left-1/2 w-full transform -translate-x-1/2 bg-gradient-to-t from-zinc-950 to-transparent text-white py-8 text-center">
                 <h3 className="text-2xl font-bold">Korean Cuisine</h3>
@@ -73,7 +73,7 @@ const CategoriesSection = () => {
             <img
               src="https://i.ibb.co.com/X8kT9dx/Pan-Asian-Cuisine.jpg"
               alt=""
-              srcset=""
+              srcSet=""
             />
             <div className="absolute bottom-0 left-1/2 w-full transform -translate-x-1/2 bg-gradient-to-t from-zinc-950 to-transparent text-white py-8 text-center">
                 <h3 className="text-2xl font-bold">Pan-Asian Cuisine</h3>
@@ -85,7 +85,7 @@ const CategoriesSection = () => {
             <img
               src="https://i.ibb.co.com/gW26JJc/Southeast-Asian-Cuisine.jpg"
               alt=""
-              srcset=""
+              srcSet=""
             />
             <div className="absolute bottom-0 left-1/2 w-full transform -translate-x-1/2 bg-gradient-to-t from-zinc-950 to-transparent text-white py-8 text-center">
                 <h3 className="text-2xl font-bold">Southeast Asian Cuisine</h3>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Parallax } from "react-parallax";
 import useMenu from "../hooks/useMenu";
 import MenuItemCard from "../components/MenuItemCard";
@@ -29,7 +29,7 @@ const OurMenu = () => {
             className="rounded-xl"
             strength={100}
           >
-            <div className="w-10/12 mx-auto py-32 my-32 border border-zinc-900 rounded-xl backdrop-blur-sm">
+            <div className="w-10/12 mx-auto py-32 my-32 border border-transparent rounded-xl backdrop-blur-sm">
               <div>
                 <h2 className="text-center font-bold text-5xl text-white">
                   Pizza
@@ -52,7 +52,7 @@ const OurMenu = () => {
             className="rounded-xl"
             strength={100}
           >
-            <div className="w-10/12 mx-auto py-32 my-32 border border-zinc-900 rounded-xl backdrop-blur-sm">
+            <div className="w-10/12 mx-auto py-32 my-32 border border-transparent rounded-xl backdrop-blur-sm">
               <div>
                 <h2 className="text-center font-bold text-5xl text-white">
                   Soup
@@ -75,7 +75,7 @@ const OurMenu = () => {
             className="rounded-xl"
             strength={100}
           >
-            <div className="w-10/12 mx-auto py-32 my-32 border border-zinc-900 rounded-xl backdrop-blur-sm">
+            <div className="w-10/12 mx-auto py-32 my-32 border border-transparent rounded-xl backdrop-blur-sm">
               <div>
                 <h2 className="text-center font-bold text-5xl text-white">
                   Offered
@@ -98,7 +98,7 @@ const OurMenu = () => {
             className="rounded-xl"
             strength={100}
           >
-            <div className="w-10/12 mx-auto py-32 my-32 border border-zinc-900 rounded-xl backdrop-blur-sm">
+            <div className="w-10/12 mx-auto py-32 my-32 border border-transparent rounded-xl backdrop-blur-sm">
               <div>
                 <h2 className="text-center font-bold text-5xl text-white">
                   Salad
@@ -121,7 +121,7 @@ const OurMenu = () => {
             className="rounded-xl"
             strength={100}
           >
-            <div className="w-10/12 mx-auto py-32 my-32 border border-zinc-900 rounded-xl backdrop-blur-sm">
+            <div className="w-10/12 mx-auto py-32 my-32 border border-transparent rounded-xl backdrop-blur-sm">
               <div>
                 <h2 className="text-center font-bold text-5xl text-white">
                   Drinks
@@ -144,7 +144,7 @@ const OurMenu = () => {
             className="rounded-xl"
             strength={100}
           >
-            <div className="w-10/12 mx-auto py-32 my-32 border border-zinc-900 rounded-xl backdrop-blur-sm">
+            <div className="w-10/12 mx-auto py-32 my-32 border border-transparent rounded-xl backdrop-blur-sm">
               <div>
                 <h2 className="text-center font-bold text-5xl text-white">
                   Dessert
