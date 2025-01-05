@@ -48,7 +48,7 @@ const OurMenu = () => {
         {/* Soup */}
         <div className="mt-10">
           <Parallax
-            bgImage="https://i.ibb.co.com/wRgKxLz/pizza.jpg"
+            bgImage="https://i.ibb.co.com/0n09rbL/soup.jpg"
             className="rounded-xl"
             strength={100}
           >
@@ -71,7 +71,7 @@ const OurMenu = () => {
         {/* Offered */}
         <div className="mt-10">
           <Parallax
-            bgImage="https://i.ibb.co.com/wRgKxLz/pizza.jpg"
+            bgImage="https://i.ibb.co.com/3NR7dVS/offered.jpg"
             className="rounded-xl"
             strength={100}
           >
@@ -94,7 +94,7 @@ const OurMenu = () => {
         {/* Salad */}
         <div className="mt-10">
           <Parallax
-            bgImage="https://i.ibb.co.com/wRgKxLz/pizza.jpg"
+            bgImage="https://i.ibb.co.com/MGnm4ZZ/salad.jpg"
             className="rounded-xl"
             strength={100}
           >
@@ -117,7 +117,7 @@ const OurMenu = () => {
         {/* Drinks */}
         <div className="mt-10">
           <Parallax
-            bgImage="https://i.ibb.co.com/wRgKxLz/pizza.jpg"
+            bgImage="https://i.ibb.co.com/vQfnXvL/drinks.jpg"
             className="rounded-xl"
             strength={100}
           >
@@ -140,7 +140,7 @@ const OurMenu = () => {
         {/* Dessert */}
         <div className="mt-10">
           <Parallax
-            bgImage="https://i.ibb.co.com/wRgKxLz/pizza.jpg"
+            bgImage="https://i.ibb.co.com/wst6hyb/desserts.jpg"
             className="rounded-xl"
             strength={100}
           >
