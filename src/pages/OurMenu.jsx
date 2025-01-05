@@ -10,7 +10,7 @@ const OurMenu = () => {
     <div>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Our Menu</title>
+        <title>Our Menus</title>
         <link rel="canonical" href="" />
       </Helmet>
       <div className="bg-[url(https://i.ibb.co.com/xq69rjc/our-menu-cover.jpg)] bg-cover bg-center bg-no-repeat py-32">
