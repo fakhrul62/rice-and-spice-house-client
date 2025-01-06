@@ -41,7 +41,7 @@ const OurMenu = () => {
             {menus
               .filter((SingleMenu) => SingleMenu.category === "pizza")
               .map((menu) => (
-                <MenuItemCard key={menu.id} menu={menu} />
+                <MenuItemCard key={menu._id} menu={menu} />
               ))}
           </div>
         </div>
@@ -64,7 +64,7 @@ const OurMenu = () => {
             {menus
               .filter((SingleMenu) => SingleMenu.category === "soup")
               .map((menu) => (
-                <MenuItemCard key={menu.id} menu={menu} />
+                <MenuItemCard key={menu._id} menu={menu} />
               ))}
           </div>
         </div>
@@ -87,7 +87,7 @@ const OurMenu = () => {
             {menus
               .filter((SingleMenu) => SingleMenu.category === "offered")
               .map((menu) => (
-                <MenuItemCard key={menu.id} menu={menu} />
+                <MenuItemCard key={menu._id} menu={menu} />
               ))}
           </div>
         </div>
@@ -110,7 +110,7 @@ const OurMenu = () => {
             {menus
               .filter((SingleMenu) => SingleMenu.category === "salad")
               .map((menu) => (
-                <MenuItemCard key={menu.id} menu={menu} />
+                <MenuItemCard key={menu._id} menu={menu} />
               ))}
           </div>
         </div>
@@ -133,7 +133,7 @@ const OurMenu = () => {
             {menus
               .filter((SingleMenu) => SingleMenu.category === "drinks")
               .map((menu) => (
-                <MenuItemCard key={menu.id} menu={menu} />
+                <MenuItemCard key={menu._id} menu={menu} />
               ))}
           </div>
         </div>
@@ -156,7 +156,7 @@ const OurMenu = () => {
             {menus
               .filter((SingleMenu) => SingleMenu.category === "dessert")
               .map((menu) => (
-                <MenuItemCard key={menu.id} menu={menu} />
+                <MenuItemCard key={menu._id} menu={menu} />
               ))}
           </div>
         </div>

@@ -6,7 +6,7 @@ import AboutSection from '../components/AboutSection';
 import CTA from '../components/CTA';
 import FeaturedSection from '../components/FeaturedSection';
 import TestimonialSection from '../components/TestimonialSection';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     return (
