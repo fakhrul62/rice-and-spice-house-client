@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*::selection{
+    background-color: #f4ec11;
+    color: #222;
+}
 
 html{
     scroll-behavior: smooth;

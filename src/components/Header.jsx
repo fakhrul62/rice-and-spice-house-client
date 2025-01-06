@@ -26,7 +26,6 @@ const Header = () => {
       <NavLink to="/our-menu">Our Menu</NavLink>
       <NavLink to="/order">Order</NavLink>
       <NavLink>Home</NavLink>
-      <NavLink>Home</NavLink>
     </>
   );
   return (
@@ -62,7 +61,7 @@ const Header = () => {
         <div className="navbar-end">
           <ul className="menu menu-horizontal px-1 *:text-white gap-5 items-center">
             {li}
-            <Link>
+            <Link to="/login">
               <button
                 className="bg-transparent hover:bg-zinc-900 duration-300 text-2xl gap-2 text-amber-400 flex items-center px-3 py-2 border border-amber-400 rounded-full"
                 type="button"

@@ -12,7 +12,7 @@ import "./TestimonialSection.css";
 const TestimonialSection = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    axios.get("reviews.json").then((res) => setReviews(res.data));
+    axios.get("http://localhost:5000/reviews").then((res) => setReviews(res.data));
   }, []);
   return (
     <div className="w-10/12 mx-auto my-20">
