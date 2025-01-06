@@ -17,7 +17,7 @@ const Login = () => {
   return (
     <div>
       <div className="w-9/12 mx-auto">
-        <h2 className="text-center text-4xl my-10 logo-1 text-zinc-900 tracking-widest">
+        <h2 className="text-center text-4xl mt-32 logo-1 text-zinc-900 tracking-widest">
           Sign In
         </h2>
 

@@ -8,9 +8,10 @@ const Root = () => {
     const thisPath = location.pathname;
     return (
         <div>
-            {thisPath !== '/login' && thisPath !== '/register' &&
+            {/* {thisPath !== '/login' && thisPath !== '/register' &&
                 <Header></Header>
-            }
+            } */}
+            <Header></Header>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>

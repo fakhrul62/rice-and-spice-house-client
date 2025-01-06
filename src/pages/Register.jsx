@@ -35,7 +35,7 @@ const Register = () => {
   return (
     <div>
       <div className="w-9/12 mx-auto">
-        <h2 className="text-center text-4xl my-10 logo-1 text-zinc-900 tracking-widest">
+        <h2 className="text-center text-4xl mt-32 logo-1 text-zinc-900 tracking-widest">
           Sign Up now!
         </h2>
         <div className="grid grid-cols-2 gap-5">
@@ -44,7 +44,7 @@ const Register = () => {
               <Lottie animationData={registerAnimation} loop={true} />
             </span>
           </div>
-          <div className="mt-5 mb-20">
+          <div className="mb-20">
             <form className="card-body font-body" onSubmit={handleSignUp}>
               <div className="form-control">
                 <label className="label">

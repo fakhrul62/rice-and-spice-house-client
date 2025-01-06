@@ -30,8 +30,8 @@ const Header = () => {
   );
   return (
     <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? "bg-zinc-900 shadow-lg" : "bg-transparent"
-      // isScrolled || location.pathname !== "/" ? "bg-zinc-900 shadow-lg" : "bg-transparent"
+      // isScrolled ? "bg-zinc-900 shadow-lg" : "bg-transparent"
+      isScrolled || location.pathname === "/login" || location.pathname === "/register" ? "bg-zinc-900 shadow-lg" : "bg-transparent"
     }`}>
       <div className="navbar w-10/12 mx-auto">
         <div className="navbar-start">
