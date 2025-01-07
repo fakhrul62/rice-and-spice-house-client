@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Lottie from "lottie-react";
 import loginAnimation from "../assets/login.json";
+import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -11,7 +12,8 @@ import {
 import { AuthContext } from "../AuthFiles/AuthProvider";
 
 const Login = () => {
-  const {user, signInUser} = useContext(AuthContext);
+  const { user, signInUser } = useContext(AuthContext);
+  const [passType, setpassType] = useState(true);
   const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
   useEffect(() => {
@@ -24,38 +26,37 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     signInUser(email, password)
-    .then((result)=> {
-      const user = result.user;
-      Swal.fire({
-        title: "User Logged In",
-        icon: "success",
-        iconColor: "#f4ec11",
-        confirmButtonText: 'Okay',
-        customClass: {
-          confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
-          title: "font-head font-bold text-2xls",
-        },
+      .then((result) => {
+        const user = result.user;
+        Swal.fire({
+          title: "User Logged In",
+          icon: "success",
+          iconColor: "#f4ec11",
+          confirmButtonText: "Okay",
+          customClass: {
+            confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
+            title: "font-head font-bold text-2xls",
+          },
+        });
       })
-    })
-    .catch(error=> {
-      const msg = error.message
-      Swal.fire({
-        title: "Unsuccessful Login",
-        text: msg,
-        icon: "error",
-        iconColor: "#f4ec11",
-        confirmButtonText: 'Okay',
-        customClass: {
-          confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
-          title: "font-head font-bold text-2xls",
-        },
-      })
-    })
-    
+      .catch((error) => {
+        const msg = error.message;
+        Swal.fire({
+          title: "Unsuccessful Login",
+          text: msg,
+          icon: "error",
+          iconColor: "#f4ec11",
+          confirmButtonText: "Okay",
+          customClass: {
+            confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
+            title: "font-head font-bold text-2xls",
+          },
+        });
+      });
   };
   const handleValidate = () => {
     const value = captchaRef.current.value;
-    if (validateCaptcha(value)==true) {
+    if (validateCaptcha(value) == true) {
       setDisabled(false);
     } else {
       setDisabled(true);
@@ -88,13 +89,30 @@ const Login = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input
-                  type="password"
-                  placeholder="Your password"
-                  name="password"
-                  className="input input-bordered"
-                  required
-                />
+                <div className="relative">
+                  <input
+                    type={passType === true ? "password" : "text"}
+                    placeholder="Your password"
+                    name="password"
+                    className="input input-bordered w-full"
+                    required
+                  />
+                  {passType ? (
+                    <button className=" absolute  top-4 right-4"
+                      onClick={() => setpassType(!passType)}
+                      type="button"
+                    >
+                      <IoEyeOutline />
+                    </button>
+                  ) : (
+                    <button className=" absolute top-4 right-4"
+                      onClick={() => setpassType(!passType)}
+                      type="button"
+                    >
+                      <IoEyeOffOutline />
+                    </button>
+                  )}
+                </div>
               </div>
 
               <div className="form-control">

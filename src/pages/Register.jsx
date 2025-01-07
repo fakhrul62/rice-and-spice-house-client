@@ -1,12 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import registerAnimation from "../assets/register.json";
 import { AuthContext } from "../AuthFiles/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 const Register = () => {
   const { user, createUser } = useContext(AuthContext);
+  const [passType, setpassType] = useState(true);
   ///
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -111,13 +113,32 @@ const Register = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input
-                  type="password"
-                  placeholder="Your password"
-                  name="password"
-                  className="input input-bordered"
-                  required
-                />
+                <div className="relative">
+                  <input
+                    type={passType === true ? "password" : "text"}
+                    placeholder="Your password"
+                    name="password"
+                    className="input input-bordered w-full"
+                    required
+                  />
+                  {passType ? (
+                    <button
+                      className=" absolute  top-4 right-4"
+                      onClick={() => setpassType(!passType)}
+                      type="button"
+                    >
+                      <IoEyeOutline />
+                    </button>
+                  ) : (
+                    <button
+                      className=" absolute top-4 right-4"
+                      onClick={() => setpassType(!passType)}
+                      type="button"
+                    >
+                      <IoEyeOffOutline />
+                    </button>
+                  )}
+                </div>
               </div>
               <div className="form-control mt-6">
                 <button className="btn  bg-orange-500 hover:bg-zinc-300 border border-zinc-300 hover:border-zinc-400 text-white hover:text-black duration-300 font-body">
