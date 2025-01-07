@@ -3,7 +3,10 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import registerAnimation from "../assets/register.json";
+import { AuthContext } from "../AuthFiles/AuthProvider";
+import { updateProfile } from "firebase/auth";
 const Register = () => {
+  const { user, createUser } = useContext(AuthContext);
   ///
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -16,6 +19,12 @@ const Register = () => {
       Swal.fire({
         title: "Pass should be at least 6 characters!!!",
         icon: "error",
+        iconColor: "#f4ec11",
+        confirmButtonText: "Okay",
+        customClass: {
+          confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
+          title: "font-head font-bold text-2xls",
+        },
       });
       return;
     }
@@ -30,7 +39,23 @@ const Register = () => {
       });
       return;
     }
-    console.log(name, email, photoURL, password);
+    createUser(email, password).then((result) => {
+      const user = result.user;
+      updateProfile(user, { displayName: name, photoURL: photoURL })
+        .then(() =>
+          Swal.fire({
+            title: "User Created",
+            icon: "success",
+            iconColor: "#f4ec11",
+            confirmButtonText: "Okay",
+            customClass: {
+              confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
+              title: "font-head font-bold text-2xls",
+            },
+          })
+        )
+        .catch((err) => console.log(err));
+    });
   };
   return (
     <div>

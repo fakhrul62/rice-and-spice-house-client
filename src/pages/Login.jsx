@@ -1,18 +1,65 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Lottie from "lottie-react";
 import loginAnimation from "../assets/login.json";
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  validateCaptcha,
+} from "react-simple-captcha";
+import { AuthContext } from "../AuthFiles/AuthProvider";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const {user, signInUser} = useContext(AuthContext);
+  const captchaRef = useRef(null);
+  const [disabled, setDisabled] = useState(true);
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
+
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    signInUser(email, password)
+    .then((result)=> {
+      const user = result.user;
+      Swal.fire({
+        title: "User Logged In",
+        icon: "success",
+        iconColor: "#f4ec11",
+        confirmButtonText: 'Okay',
+        customClass: {
+          confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
+          title: "font-head font-bold text-2xls",
+        },
+      })
+    })
+    .catch(error=> {
+      const msg = error.message
+      Swal.fire({
+        title: "Unsuccessful Login",
+        text: msg,
+        icon: "error",
+        iconColor: "#f4ec11",
+        confirmButtonText: 'Okay',
+        customClass: {
+          confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
+          title: "font-head font-bold text-2xls",
+        },
+      })
+    })
+    
+  };
+  const handleValidate = () => {
+    const value = captchaRef.current.value;
+    if (validateCaptcha(value)==true) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
   };
   return (
     <div>
@@ -49,8 +96,34 @@ const Login = () => {
                   required
                 />
               </div>
+
+              <div className="form-control">
+                <div>
+                  <LoadCanvasTemplate />
+                </div>
+                <div className="flex gap-3">
+                  <input
+                    type="text"
+                    placeholder="Captcha"
+                    ref={captchaRef}
+                    name="captcha"
+                    className="input input-bordered flex-grow"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={handleValidate}
+                    className="btn border border-zinc-300"
+                  >
+                    Validate
+                  </button>
+                </div>
+              </div>
               <div className="form-control mt-6">
-                <button className="btn bg-orange-500 hover:bg-zinc-300 border border-zinc-300 hover:border-zinc-400 text-white hover:text-black duration-300 font-body">
+                <button
+                  disabled={disabled}
+                  className="btn bg-orange-500 hover:bg-zinc-300 border border-zinc-300 hover:border-zinc-400 text-white hover:text-black duration-300 font-body"
+                >
                   Log In
                 </button>
               </div>
@@ -69,7 +142,7 @@ const Login = () => {
           </div>
           <div className="flex justify-center items-center">
             <span className="relative w-full">
-            <Lottie animationData={loginAnimation} loop={true} />
+              <Lottie animationData={loginAnimation} loop={true} />
             </span>
           </div>
         </div>
