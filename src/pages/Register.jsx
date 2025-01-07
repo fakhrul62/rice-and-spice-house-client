@@ -101,7 +101,7 @@ const Register = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Valid Photo URL (URL should end with .jpg/.jpeg/.png)"
+                  placeholder="(URL should end with .jpg/.jpeg/.png). 1X1 recommended"
                   name="photoURL"
                   className="input input-bordered"
                   required
