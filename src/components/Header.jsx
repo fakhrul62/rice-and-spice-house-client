@@ -27,7 +27,7 @@ const Header = () => {
       <NavLink to="/">Home</NavLink>
       <NavLink to="/our-menu">Our Menu</NavLink>
       <NavLink to="/order">Order</NavLink>
-      <NavLink>Home</NavLink>
+      <NavLink to="/profile">Profile</NavLink>
     </>
   );
   const logOut = ()=>{
@@ -41,6 +41,7 @@ const Header = () => {
         // isScrolled ? "bg-zinc-900 shadow-lg" : "bg-transparent"
         isScrolled ||
         location.pathname === "/login" ||
+        location.pathname === "/profile" ||
         location.pathname === "/register"
           ? "bg-zinc-900 shadow-lg"
           : "bg-transparent"

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Lottie from "lottie-react";
@@ -13,8 +13,10 @@ import { AuthContext } from "../AuthFiles/AuthProvider";
 
 const Login = () => {
   const { user, signInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const [passType, setpassType] = useState(true);
-  const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -38,6 +40,7 @@ const Login = () => {
             title: "font-head font-bold text-2xls",
           },
         });
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const msg = error.message;
@@ -54,8 +57,8 @@ const Login = () => {
         });
       });
   };
-  const handleValidate = () => {
-    const value = captchaRef.current.value;
+  const handleValidate = (e) => {
+    const value = e.target.value;
     if (validateCaptcha(value) == true) {
       setDisabled(false);
     } else {
@@ -123,18 +126,18 @@ const Login = () => {
                   <input
                     type="text"
                     placeholder="Captcha"
-                    ref={captchaRef}
+                    onBlur={handleValidate}
                     name="captcha"
                     className="input input-bordered flex-grow"
                     required
                   />
-                  <button
+                  {/* <button
                     type="button"
                     onClick={handleValidate}
                     className="btn border border-zinc-300"
                   >
                     Validate
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <div className="form-control mt-6">
