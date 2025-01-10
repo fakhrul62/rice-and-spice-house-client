@@ -40,7 +40,7 @@ const Login = () => {
             title: "font-head font-bold text-2xls",
           },
         });
-        navigate(from, { replace: true });
+        navigate(from);
       })
       .catch((error) => {
         const msg = error.message;
@@ -101,14 +101,16 @@ const Login = () => {
                     required
                   />
                   {passType ? (
-                    <button className=" absolute  top-4 right-4"
+                    <button
+                      className=" absolute  top-4 right-4"
                       onClick={() => setpassType(!passType)}
                       type="button"
                     >
                       <IoEyeOutline />
                     </button>
                   ) : (
-                    <button className=" absolute top-4 right-4"
+                    <button
+                      className=" absolute top-4 right-4"
                       onClick={() => setpassType(!passType)}
                       type="button"
                     >

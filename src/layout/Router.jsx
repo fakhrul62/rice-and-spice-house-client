@@ -8,7 +8,6 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "../routes/PrivateRoute";
 import UserProfile from "../pages/UserProfile";
-import Test from "../pages/Test";
 
 const Router = createBrowserRouter([
   {
