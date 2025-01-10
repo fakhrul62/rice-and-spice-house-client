@@ -8,6 +8,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "../routes/PrivateRoute";
 import UserProfile from "../pages/UserProfile";
+import Dashboard from "./Dashboard";
+import Cart from "../pages/Dashboard/Cart";
 
 const Router = createBrowserRouter([
   {
@@ -41,6 +43,28 @@ const Router = createBrowserRouter([
             <UserProfile></UserProfile>
           </PrivateRoute>
         ),
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      { 
+        path: "/dashboard/cart", 
+        element: <Cart></Cart> 
+      },
+      { 
+        path: "/dashboard/reservation", 
+        element: <Cart></Cart> 
+      },
+      { 
+        path: "/dashboard/review", 
+        element: <Cart></Cart> 
+      },
+      { 
+        path: "/dashboard/bookings", 
+        element: <Cart></Cart> 
       },
     ],
   },

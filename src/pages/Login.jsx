@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Lottie from "lottie-react";
@@ -9,10 +9,10 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { AuthContext } from "../AuthFiles/AuthProvider";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
-  const { user, signInUser } = useContext(AuthContext);
+  const { user, signInUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";

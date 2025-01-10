@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../AuthFiles/AuthProvider';
 import { useLocation } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 const UserProfile = () => {
-    const {user} = useContext(AuthContext);
+    const {user} = useAuth();
     const location = useLocation();
     return (
         <div className='mt-32'>

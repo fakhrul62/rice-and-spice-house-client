@@ -1,15 +1,16 @@
-import Lottie from "lottie-react";
-import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink, useLocation, useParams } from "react-router-dom";
-import logo from "../assets/logo.json";
+import React, { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { PiUserCircleLight } from "react-icons/pi";
-import { AuthContext } from "../AuthFiles/AuthProvider";
+import { IoCartOutline } from "react-icons/io5";
+import useAuth from "../hooks/useAuth";
+import useCart from "../hooks/useCart";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const { user, logout } = useContext(AuthContext);
+  const { user, logout } = useAuth();
+  const [cart] = useCart();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -28,13 +29,22 @@ const Header = () => {
       <NavLink to="/our-menu">Our Menu</NavLink>
       <NavLink to="/order">Order</NavLink>
       <NavLink to="/profile">Profile</NavLink>
+      <NavLink
+        className="bg-amber-400 rounded-full p-3 text-xl *:text-zinc-900 indicator"
+        to="/dashboard"
+      >
+        <div className="indicator-item badge badge-white">+{cart?.length}</div>
+        <button className="" type="button">
+          <IoCartOutline />
+        </button>
+      </NavLink>
     </>
   );
-  const logOut = ()=>{
+  const logOut = () => {
     logout()
-    .then(()=>console.log("Logged out Successfully"))
-    .catch(error=> console.log(error.message))
-  }
+      .then(() => console.log("Logged out Successfully"))
+      .catch((error) => console.log(error.message));
+  };
   return (
     <div
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -77,11 +87,18 @@ const Header = () => {
             {li}
             {user ? (
               <Link>
-                <button onClick={logOut}
+                <button
+                  onClick={logOut}
                   className="bg-transparent hover:bg-zinc-900 duration-300 text-2xl gap-2 text-amber-400 flex items-center px-3 py-2 border border-amber-400 rounded-full"
                   type="button"
                 >
-                  <span><img src={user.photoURL} className="h-8 w-8 object-cover rounded-full"/></span> <span className="text-base">Logout</span>{" "}
+                  <span>
+                    <img
+                      src={user.photoURL}
+                      className="h-8 w-8 object-cover rounded-full"
+                    />
+                  </span>{" "}
+                  <span className="text-base">Logout</span>{" "}
                 </button>
               </Link>
             ) : (
