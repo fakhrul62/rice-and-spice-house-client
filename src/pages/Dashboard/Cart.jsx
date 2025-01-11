@@ -2,36 +2,44 @@ import React from "react";
 import useCart from "../../hooks/useCart";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Cart = () => {
-  const [cart] = useCart();
-  const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+  const axiosSecure = useAxiosSecure();
+  const [cart,refetch] = useCart();
+  const totalPrice = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
 
   const handleDelete = (item) => {
-    Swal.fire({
-      title: "Are you sure?",
-      icon: "warning",
-      iconColor: "#f4ec11",
-      showCancelButton: true,
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, delete it!",
-      customClass: {
-        confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
-        title: "font-head font-bold text-2xls",
-      },
-    }).then((result) => {
-      if (result.isConfirmed) {
+    axiosSecure.delete(`/carts/${item}`).then((res) => {
+      if(res.data.deletedCount > 0){
         Swal.fire({
-          title: "Deleted!",
-          iconColor: "#f4ec11",
-          text: "Item has been removed from the cart.",
-          icon: "success",
-          customClass: {
-            confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
-            title: "font-head font-bold text-2xls",
-          },
-        });
+            title: "Are you sure?",
+            icon: "warning",
+            iconColor: "#f4ec11",
+            showCancelButton: true,
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, delete it!",
+            customClass: {
+              confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
+              title: "font-head font-bold text-2xls",
+            },
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: "Deleted!",
+                iconColor: "#f4ec11",
+                text: "Item has been removed from the cart.",
+                icon: "success",
+                customClass: {
+                  confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
+                  title: "font-head font-bold text-2xls",
+                },
+              });
+              refetch();
+            }
+          });
       }
+      
     });
   };
   return (

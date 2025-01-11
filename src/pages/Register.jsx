@@ -6,9 +6,12 @@ import registerAnimation from "../assets/register.json";
 import { AuthContext } from "../AuthFiles/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import GoogleLogin from "../components/GoogleLogin";
 const Register = () => {
   const { user, createUser } = useContext(AuthContext);
   const [passType, setpassType] = useState(true);
+  const axiosPublic = useAxiosPublic();
   ///
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -44,18 +47,27 @@ const Register = () => {
     createUser(email, password).then((result) => {
       const user = result.user;
       updateProfile(user, { displayName: name, photoURL: photoURL })
-        .then(() =>
-          Swal.fire({
-            title: "User Created",
-            icon: "success",
-            iconColor: "#f4ec11",
-            confirmButtonText: "Okay",
-            customClass: {
-              confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
-              title: "font-head font-bold text-2xls",
-            },
-          })
-        )
+        .then(() => {
+          const userInfo = {
+            name: name,
+            email: email,
+            photoURL: photoURL,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              Swal.fire({
+                title: "User Created",
+                icon: "success",
+                iconColor: "#f4ec11",
+                confirmButtonText: "Okay",
+                customClass: {
+                  confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
+                  title: "font-head font-bold text-2xls",
+                },
+              });
+            }
+          });
+        })
         .catch((err) => console.log(err));
     });
   };
@@ -146,6 +158,7 @@ const Register = () => {
                 </button>
               </div>
             </form>
+            <GoogleLogin text={"Sign up with"}></GoogleLogin>
             <h3 className="font-body text-center text-xl">
               Already have an account?{" "}
               <Link to="/login" className="text-orange-500 font-bold">

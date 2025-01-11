@@ -1,7 +1,7 @@
 import React from "react";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
-import useAxios from "../hooks/useAxios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import useCart from "../hooks/useCart";
 
 
@@ -9,7 +9,7 @@ const OrderItemCard = ({ menu }) => {
   const { name, recipe, image, price, _id } = menu;
   const { user } = useAuth();
   const [, refetch] = useCart();
-  const axiosSecure = useAxios();
+  const axiosSecure = useAxiosSecure();
   const handleAddToCart = () => {
     if (user && user.email) {
       const cartItem = {

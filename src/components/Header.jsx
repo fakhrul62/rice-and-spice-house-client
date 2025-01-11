@@ -28,10 +28,15 @@ const Header = () => {
       <NavLink to="/">Home</NavLink>
       <NavLink to="/our-menu">Our Menu</NavLink>
       <NavLink to="/order">Order</NavLink>
-      <NavLink to="/profile">Profile</NavLink>
+      {user && (
+        <>
+          <NavLink to="/profile">Profile</NavLink>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+        </>
+      )}
       <NavLink
         className="bg-amber-400 rounded-full p-3 text-xl *:text-zinc-900 indicator"
-        to="/dashboard"
+        to="/dashboard/cart"
       >
         <div className="indicator-item badge badge-white">+{cart?.length}</div>
         <button className="" type="button">

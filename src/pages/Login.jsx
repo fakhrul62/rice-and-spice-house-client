@@ -10,6 +10,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import useAuth from "../hooks/useAuth";
+import GoogleLogin from "../components/GoogleLogin";
 
 const Login = () => {
   const { user, signInUser } = useAuth();
@@ -30,17 +31,19 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         const user = result.user;
-        Swal.fire({
-          title: "User Logged In",
-          icon: "success",
-          iconColor: "#f4ec11",
-          confirmButtonText: "Okay",
-          customClass: {
-            confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
-            title: "font-head font-bold text-2xls",
-          },
-        });
-        navigate(from);
+        if(result.insertedId){
+          Swal.fire({
+            title: "User Logged In",
+            icon: "success",
+            iconColor: "#f4ec11",
+            confirmButtonText: "Okay",
+            customClass: {
+              confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
+              title: "font-head font-bold text-2xls",
+            },
+          });
+          navigate(from);
+        }
       })
       .catch((error) => {
         const msg = error.message;
@@ -151,11 +154,7 @@ const Login = () => {
                 </button>
               </div>
             </form>
-            <div className="my-4 text-center">
-              <button className="px-20 btn bg-wgite hover:bg-zinc-300 border border-zinc-300 hover:border-zinc-400 text-black hover:text-black duration-300 font-body">
-                Sign in with Google
-              </button>
-            </div>
+            <GoogleLogin text={"Sign in with"}></GoogleLogin>
             <h3 className="font-body text-center text-xl">
               New to this site?{" "}
               <Link to="/register" className="text-orange-500 font-bold">
