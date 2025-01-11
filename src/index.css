@@ -27,6 +27,9 @@ body{
 .font-3{
     font-family: "Playfair Display", serif;
 }
+.font-body{
+    font-family: "Outfit", serif!important;
+}
 body{
     font-family: "Outfit", serif;
 }

@@ -10,6 +10,10 @@ import PrivateRoute from "../routes/PrivateRoute";
 import UserProfile from "../pages/UserProfile";
 import Dashboard from "./Dashboard";
 import Cart from "../pages/Dashboard/Cart";
+import Reservation from "../pages/Dashboard/Reservation";
+import Review from "../pages/Dashboard/Review";
+import Bookings from "../pages/Dashboard/Bookings";
+import DashHome from "../pages/Dashboard/DashHome";
 
 const Router = createBrowserRouter([
   {
@@ -48,23 +52,27 @@ const Router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
-      { 
-        path: "/dashboard/cart", 
-        element: <Cart></Cart> 
+      {
+        path: "/dashboard/cart",
+        element: <Cart></Cart>,
       },
-      { 
-        path: "/dashboard/reservation", 
-        element: <Cart></Cart> 
+      {
+        path: "/dashboard/reservation",
+        element: <Reservation></Reservation>,
       },
-      { 
-        path: "/dashboard/review", 
-        element: <Cart></Cart> 
+      {
+        path: "/dashboard/review",
+        element: <Review></Review>,
       },
-      { 
-        path: "/dashboard/bookings", 
-        element: <Cart></Cart> 
+      {
+        path: "/dashboard/bookings",
+        element: <Bookings></Bookings>,
       },
     ],
   },
