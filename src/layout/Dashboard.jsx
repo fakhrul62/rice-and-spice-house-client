@@ -42,7 +42,7 @@ const Dashboard = () => {
                       Admin Dashboard
                     </NavLink>
 
-                    <NavLink to="/dashboard/add-items">
+                    <NavLink to="/dashboard/add-item">
                       <BsCart4 />
                       Add Items
                     </NavLink>
@@ -103,7 +103,10 @@ const Dashboard = () => {
               src={user.photoURL}
               className="h-12 w-12 object-cover rounded-full"
             />
+            <div>
             <h2 className="text-white">{user.displayName}</h2>
+            <h2 className="text-sm text-zinc-300">{user.email}</h2>
+            </div>
           </div>
         </div>
       </div>
