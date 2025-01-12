@@ -7,12 +7,13 @@ import { HiArrowLeftStartOnRectangle } from "react-icons/hi2";
 import "../css/Dashboard.css";
 import useAuth from "../hooks/useAuth";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const { user } = useAuth();
   const [cart] = useCart();
 
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="flex">
@@ -36,7 +37,7 @@ const Dashboard = () => {
               <ul className="dash-nav *:text-white hover:*:text-zinc-950 hover:*:bg-amber-400 *:rounded-lg *:py-2 *:px-4 *:mb-2 *:flex *:items-center *:gap-2">
                 {isAdmin ? (
                   <>
-                    <NavLink to="/dashboard/admin-home" end>
+                    <NavLink to="/dashboard/home" end>
                       <LuLayoutDashboard />
                       Admin Dashboard
                     </NavLink>

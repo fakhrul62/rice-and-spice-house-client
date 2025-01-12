@@ -15,6 +15,7 @@ import Review from "../pages/Dashboard/Review";
 import Bookings from "../pages/Dashboard/Bookings";
 import UsersHome from "../pages/Dashboard/UsersHome";
 import AllUsers from "../pages/Dashboard/AllUsers";
+import AdminHome from "../pages/Dashboard/AdminHome";
 
 const Router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const Router = createBrowserRouter([
     ),
     children: [
       //admin routes
+      {
+        path: "/dashboard/home",
+        element: <AdminHome></AdminHome>
+      },
       {
         path: "/dashboard/all-users",
         element: <AllUsers></AllUsers>
