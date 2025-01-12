@@ -11,6 +11,9 @@ import useCart from "../hooks/useCart";
 const Dashboard = () => {
   const { user } = useAuth();
   const [cart] = useCart();
+
+  const isAdmin = true;
+
   return (
     <div className="flex">
       <div>
@@ -31,30 +34,61 @@ const Dashboard = () => {
             </div>
             <div className="p-4">
               <ul className="dash-nav *:text-white hover:*:text-zinc-950 hover:*:bg-amber-400 *:rounded-lg *:py-2 *:px-4 *:mb-2 *:flex *:items-center *:gap-2">
-                <NavLink to="/dashboard" end>
-                  <LuLayoutDashboard />
-                  Dashboard
-                </NavLink>
+                {isAdmin ? (
+                  <>
+                    <NavLink to="/dashboard/admin-home" end>
+                      <LuLayoutDashboard />
+                      Admin Dashboard
+                    </NavLink>
 
-                <NavLink to="/dashboard/cart">
-                  <BsCart4 />
-                My Cart ({cart.length})
-                </NavLink>
+                    <NavLink to="/dashboard/add-items">
+                      <BsCart4 />
+                      Add Items
+                    </NavLink>
 
-                <NavLink to="/dashboard/reservation">
-                  <IoCalendarOutline />
-                  Reservation
-                </NavLink>
+                    <NavLink to="/dashboard/manage-items">
+                      <IoCalendarOutline />
+                      Manage Items
+                    </NavLink>
 
-                <NavLink to="/dashboard/review">
-                  <PiQuotes />
-                  Add a Review
-                </NavLink>
+                    <NavLink to="/dashboard/manage-bookings">
+                      <IoBookmarksOutline />
+                      Manage Bookings
+                    </NavLink>
 
-                <NavLink to="/dashboard/bookings">
-                  <IoBookmarksOutline />
-                  My Bookings
-                </NavLink>
+                    <NavLink to="/dashboard/all-users">
+                      <PiQuotes />
+                      All Users
+                    </NavLink>
+                  </>
+                ) : (
+                  <>
+                    <NavLink to="/dashboard/user-home" end>
+                      <LuLayoutDashboard />
+                      Users Dashboard
+                    </NavLink>
+
+                    <NavLink to="/dashboard/cart">
+                      <BsCart4 />
+                      My Cart ({cart.length})
+                    </NavLink>
+
+                    <NavLink to="/dashboard/reservation">
+                      <IoCalendarOutline />
+                      Reservation
+                    </NavLink>
+
+                    <NavLink to="/dashboard/review">
+                      <PiQuotes />
+                      Add a Review
+                    </NavLink>
+
+                    <NavLink to="/dashboard/my-bookings">
+                      <IoBookmarksOutline />
+                      My Bookings
+                    </NavLink>
+                  </>
+                )}
 
                 <NavLink className="" to="/">
                   <HiArrowLeftStartOnRectangle />

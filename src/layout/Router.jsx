@@ -13,7 +13,8 @@ import Cart from "../pages/Dashboard/Cart";
 import Reservation from "../pages/Dashboard/Reservation";
 import Review from "../pages/Dashboard/Review";
 import Bookings from "../pages/Dashboard/Bookings";
-import DashHome from "../pages/Dashboard/DashHome";
+import UsersHome from "../pages/Dashboard/UsersHome";
+import AllUsers from "../pages/Dashboard/AllUsers";
 
 const Router = createBrowserRouter([
   {
@@ -58,6 +59,16 @@ const Router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      //admin routes
+      {
+        path: "/dashboard/all-users",
+        element: <AllUsers></AllUsers>
+      },
+      //user routes
+      {
+        path: "/dashboard/user-home",
+        element: <UsersHome></UsersHome>
+      },
       {
         path: "/dashboard/cart",
         element: <Cart></Cart>,
@@ -71,7 +82,7 @@ const Router = createBrowserRouter([
         element: <Review></Review>,
       },
       {
-        path: "/dashboard/bookings",
+        path: "/dashboard/my-bookings",
         element: <Bookings></Bookings>,
       },
     ],
