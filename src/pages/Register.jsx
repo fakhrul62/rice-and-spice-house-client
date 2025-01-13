@@ -44,7 +44,8 @@ const Register = () => {
       });
       return;
     }
-    createUser(email, password).then((result) => {
+    createUser(email, password)
+    .then((result) => {
       const user = result.user;
       updateProfile(user, { displayName: name, photoURL: photoURL })
         .then(() => {
@@ -68,7 +69,20 @@ const Register = () => {
             }
           });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {console.log("Your error message: ", err.message)});
+    })
+    .catch((err) => {
+      Swal.fire({
+        title: "Failed to create user",
+        icon: "error",
+        iconColor: "#f4ec11",
+        text: err.message,
+        confirmButtonText: "Okay",
+        customClass: {
+          confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
+          title: "font-head font-bold text-2xls",
+        },
+      });
     });
   };
   return (

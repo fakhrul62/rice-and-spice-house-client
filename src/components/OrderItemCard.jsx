@@ -6,7 +6,7 @@ import useCart from "../hooks/useCart";
 
 
 const OrderItemCard = ({ menu }) => {
-  const { name, recipe, image, price, _id } = menu;
+  const { name, recipe, image, category, price, _id } = menu;
   const { user } = useAuth();
   const [, refetch] = useCart();
   const axiosSecure = useAxiosSecure();
@@ -15,7 +15,7 @@ const OrderItemCard = ({ menu }) => {
       const cartItem = {
         menuId : _id,
         email: user.email,
-        name, image, price
+        name, image, price, category
       };
       axiosSecure.post("/carts", cartItem)
       .then(res=> {

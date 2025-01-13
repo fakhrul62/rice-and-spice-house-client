@@ -4,11 +4,11 @@ import Swal from "sweetalert2";
 import Lottie from "lottie-react";
 import loginAnimation from "../assets/login.json";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
-import {
-  loadCaptchaEnginge,
-  LoadCanvasTemplate,
-  validateCaptcha,
-} from "react-simple-captcha";
+// import {
+//   loadCaptchaEnginge,
+//   LoadCanvasTemplate,
+//   validateCaptcha,
+// } from "react-simple-captcha";
 import useAuth from "../hooks/useAuth";
 import GoogleLogin from "../components/GoogleLogin";
 
@@ -19,9 +19,9 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
   const [passType, setpassType] = useState(true);
   const [disabled, setDisabled] = useState(true);
-  useEffect(() => {
-    loadCaptchaEnginge(6);
-  }, []);
+  // useEffect(() => {
+  //   loadCaptchaEnginge(6);
+  // }, []);
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -29,21 +29,18 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     signInUser(email, password)
-      .then((result) => {
-        const user = result.user;
-        if(result.insertedId){
-          Swal.fire({
-            title: "User Logged In",
-            icon: "success",
-            iconColor: "#f4ec11",
-            confirmButtonText: "Okay",
-            customClass: {
-              confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
-              title: "font-head font-bold text-2xls",
-            },
-          });
-          navigate(from);
-        }
+      .then(() => {
+        Swal.fire({
+          title: "User Logged In",
+          icon: "success",
+          iconColor: "#f4ec11",
+          confirmButtonText: "Okay",
+          customClass: {
+            confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
+            title: "font-head font-bold text-2xls",
+          },
+        });
+        navigate(from);
       })
       .catch((error) => {
         const msg = error.message;
@@ -60,14 +57,14 @@ const Login = () => {
         });
       });
   };
-  const handleValidate = (e) => {
-    const value = e.target.value;
-    if (validateCaptcha(value) == true) {
-      setDisabled(false);
-    } else {
-      setDisabled(true);
-    }
-  };
+  // const handleValidate = (e) => {
+  //   const value = e.target.value;
+  //   if (validateCaptcha(value) == true) {
+  //     setDisabled(false);
+  //   } else {
+  //     setDisabled(true);
+  //   }
+  // };
   return (
     <div>
       <div className="w-9/12 mx-auto">
@@ -123,7 +120,7 @@ const Login = () => {
                 </div>
               </div>
 
-              <div className="form-control">
+              {/* <div className="form-control">
                 <div>
                   <LoadCanvasTemplate />
                 </div>
@@ -136,18 +133,11 @@ const Login = () => {
                     className="input input-bordered flex-grow"
                     required
                   />
-                  {/* <button
-                    type="button"
-                    onClick={handleValidate}
-                    className="btn border border-zinc-300"
-                  >
-                    Validate
-                  </button> */}
                 </div>
-              </div>
+              </div> */}
               <div className="form-control mt-6">
                 <button
-                  disabled={disabled}
+                  // disabled={disabled}
                   className="btn bg-orange-500 hover:bg-zinc-300 border border-zinc-300 hover:border-zinc-400 text-white hover:text-black duration-300 font-body"
                 >
                   Log In

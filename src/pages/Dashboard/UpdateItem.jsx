@@ -4,11 +4,13 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const img_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
+import { useLoaderData } from "react-router-dom";
 
-const AddItem = () => {
+const UpdateItem = () => {
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
-  const handleAddItem = async (e) => {
+  const item = useLoaderData();
+  const handleUpdateItem = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -28,38 +30,37 @@ const AddItem = () => {
       },
     });
     const imgData = res.data.data.url;
-    const newItem = { name, recipe, image: imgData, category, price };
-    // console.log(newItem);
+    const updatedItem = { name, recipe, image: imgData, category, price };
+    console.log(updatedItem);
     if (res.data.success) {
-      //send it to server
-      const menuRes = await axiosSecure.post("/menus", newItem);
-      console.log(menuRes.data);
-      if (menuRes.data.insertedId) {
-        Swal.fire({
-          title: "Item Added",
-          icon: "success",
-          iconColor: "#f4ec11",
-          confirmButtonText: "Okay",
-          customClass: {
-            confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
-            title: "font-head font-bold text-2xls",
-          },
-        });
-      }
-    }
-    // form.reset();
+          //send it to server
+          const menuRes = await axiosSecure.patch(`/menus/${item._id}`, updatedItem);
+          console.log(menuRes.data);
+          if (menuRes.data.modifiedCount> 0) {
+            Swal.fire({
+              title: "Item Updated",
+              icon: "success",
+              iconColor: "#f4ec11",
+              confirmButtonText: "Okay",
+              customClass: {
+                confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
+                title: "font-head font-bold text-2xls",
+              },
+            });
+          }
+        }
   };
   return (
     <div>
       <div className="text-center my-10">
         <h2 className="text-2xl font-bold logo-1 tracking-widest text-zinc-900 inline-block border-b-4 border-amber-400 pb-1">
-          ADD ITEM
+          UPDATE ITEM
         </h2>
       </div>
       <div>
         <form
           className="grid grid-cols-2 gap-5 w-8/12 mx-auto"
-          onSubmit={handleAddItem}
+          onSubmit={handleUpdateItem}
         >
           <label className="form-control w-full">
             <div className="label">
@@ -69,6 +70,7 @@ const AddItem = () => {
               type="text"
               placeholder="Name"
               name="name"
+              defaultValue={item.name}
               required
               className="input input-bordered w-full "
             />
@@ -79,10 +81,10 @@ const AddItem = () => {
             </div>
             <select
               placeholder="Category"
+              defaultValue={item.category}
               name="category"
               required
               className="input input-bordered w-full"
-              defaultValue=""
             >
               <option disabled value="">
                 Select
@@ -104,6 +106,7 @@ const AddItem = () => {
               type="number"
               placeholder="Price"
               name="price"
+              defaultValue={item.price}
               required
               className="input input-bordered w-full "
             />
@@ -128,6 +131,7 @@ const AddItem = () => {
               rows="4"
               placeholder="Recipe"
               name="recipe"
+              defaultValue={item.recipe}
               required
               className="textarea  textarea-bordered w-full "
             />
@@ -138,7 +142,7 @@ const AddItem = () => {
               type="submit"
               className="btn w-full bg-zinc-900 text-white py-3 rounded-md hover:bg-amber-400 hover:text-black hover:border-black"
             >
-              Add Item
+              Update Item
             </button>
           </div>
         </form>
@@ -147,4 +151,4 @@ const AddItem = () => {
   );
 };
 
-export default AddItem;
+export default UpdateItem;

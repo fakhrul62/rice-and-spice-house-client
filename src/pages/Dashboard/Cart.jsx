@@ -3,6 +3,7 @@ import useCart from "../../hooks/useCart";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const axiosSecure = useAxiosSecure();
@@ -65,12 +66,13 @@ const Cart = () => {
           </h4>
         </div>
         <div>
+          <Link to="/dashboard/payment">
           <button
             type="button"
             className="bg-amber-400 rounded-full text-lg px-6 py-3 "
           >
             Pay Now
-          </button>
+          </button></Link>
         </div>
       </div>
       <div>
@@ -82,6 +84,7 @@ const Cart = () => {
                 <th>No.</th>
                 <th>Image</th>
                 <th>Name</th>
+                <th>Category</th>
                 <th>Price</th>
                 <th className="text-center">Action</th>
               </tr>
@@ -98,6 +101,7 @@ const Cart = () => {
                     />
                   </td>
                   <td className="font-semibold">{item.name}</td>
+                  <td className="font-semibold">{item.category}</td>
                   <td>${item.price}</td>
                   <td className="text-center">
                     <button

@@ -1,8 +1,9 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { BsCart4 } from "react-icons/bs";
-import { IoCalendarOutline, IoBookmarksOutline } from "react-icons/io5";
-import { PiQuotes } from "react-icons/pi";
+import { IoCalendarOutline, IoBookmarksOutline, IoExitOutline  } from "react-icons/io5";
+import { MdOutlineShoppingBag } from "react-icons/md";
+import { PiMoneyWavy, PiQuotes } from "react-icons/pi";
 import { HiArrowLeftStartOnRectangle } from "react-icons/hi2";
 import "../css/Dashboard.css";
 import useAuth from "../hooks/useAuth";
@@ -10,10 +11,15 @@ import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [cart] = useCart();
 
   const [isAdmin] = useAdmin();
+  const logOut = () => {
+    logout()
+      .then(() => console.log("Logged out Successfully"))
+      .catch((error) => console.log(error.message));
+  };
 
   return (
     <div className="flex">
@@ -78,6 +84,10 @@ const Dashboard = () => {
                       <IoCalendarOutline />
                       Reservation
                     </NavLink>
+                    <NavLink to="/dashboard/reservation">
+                      <PiMoneyWavy  />
+                      Payment History
+                    </NavLink>
 
                     <NavLink to="/dashboard/review">
                       <PiQuotes />
@@ -87,6 +97,11 @@ const Dashboard = () => {
                     <NavLink to="/dashboard/my-bookings">
                       <IoBookmarksOutline />
                       My Bookings
+                    </NavLink>
+
+                    <NavLink className="" to="/order">
+                      <MdOutlineShoppingBag />
+                      Order Now
                     </NavLink>
                   </>
                 )}
@@ -98,15 +113,20 @@ const Dashboard = () => {
               </ul>
             </div>
           </div>
-          <div className="flex gap-2 items-center mt-4 p-6">
-            <img
-              src={user.photoURL}
-              className="h-12 w-12 object-cover rounded-full"
-            />
-            <div>
-            <h2 className="text-white">{user.displayName}</h2>
-            <h2 className="text-sm text-zinc-300">{user.email}</h2>
+          <div className="flex gap-2 items-center justify-between mt-4 p-6">
+            <div className="flex gap-2 items-center ">
+              <img
+                src={user.photoURL}
+                className="h-12 w-12 object-cover rounded-full"
+              />
+              <div>
+                <h2 className="text-white">{user.displayName}</h2>
+                <h2 className="text-sm text-zinc-300">{user.email}</h2>
+              </div>
             </div>
+            <button type="button" className="text-white" onClick={logOut}>
+              <IoExitOutline />
+            </button>
           </div>
         </div>
       </div>
