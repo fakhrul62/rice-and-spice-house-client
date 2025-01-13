@@ -68,8 +68,8 @@ const Cart = () => {
         <div>
           <Link to="/dashboard/payment">
           <button
-            type="button"
-            className="bg-amber-400 rounded-full text-lg px-6 py-3 "
+            type="button" disabled={!cart.length}
+            className="bg-amber-400 hover:bg-zinc-900 hover:text-amber-400 rounded-full text-lg px-6 py-3 "
           >
             Pay Now
           </button></Link>
