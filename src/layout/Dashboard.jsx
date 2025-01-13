@@ -84,7 +84,7 @@ const Dashboard = () => {
                       <IoCalendarOutline />
                       Reservation
                     </NavLink>
-                    <NavLink to="/dashboard/reservation">
+                    <NavLink to="/dashboard/payment-history">
                       <PiMoneyWavy  />
                       Payment History
                     </NavLink>
