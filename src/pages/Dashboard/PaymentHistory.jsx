@@ -14,9 +14,7 @@ const PaymentHistory = () => {
       return res.data;
     },
   });
-//   const totalSpent = payments
-//     ?.reduce((sum, item) => sum + parseInt(item.amount), 0)
-//     .toFixed(2);
+  const totalSpent = payments.reduce((sum, item) => sum + parseInt(item.amount), 0).toFixed(2);
   return (
     <div>
       <div className="text-center my-10">
@@ -30,9 +28,9 @@ const PaymentHistory = () => {
             <h2 className="py-3 font-bold text-xl">
               Total Payment: {payments.length}
             </h2>
-            {/* <h2 className="py-3 font-bold text-xl">
+            <h2 className="py-3 font-bold text-xl">
               Total Spent: {totalSpent}
-            </h2> */}
+            </h2>
           </div>
           <div className="overflow-x-auto">
             <table className="table">
