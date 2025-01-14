@@ -5,12 +5,15 @@ import { PiUserCircleLight } from "react-icons/pi";
 import { IoCartOutline } from "react-icons/io5";
 import useAuth from "../hooks/useAuth";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Header = () => {
+  const { user, logout } = useAuth();
+  const [isAdmin] = useAdmin();
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const { user, logout } = useAuth();
   const [cart] = useCart();
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -29,11 +32,22 @@ const Header = () => {
       <NavLink to="/our-menu">Our Menu</NavLink>
       <NavLink to="/order">Order</NavLink>
       {user && (
-        <>
-          <NavLink to="/profile">Profile</NavLink>
-          <NavLink to="/dashboard">Dashboard</NavLink>
-        </>
-      )}
+        
+          isAdmin ? (
+            <>
+            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/dashboard/home">Dashboard</NavLink></>
+          ) :
+          (
+            <>
+            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/dashboard/user-home">Dashboard</NavLink></>
+          )
+
+      )
+      }
+     
+      
       <NavLink
         className="bg-amber-400 rounded-full p-3 text-xl *:text-zinc-900 indicator"
         to="/dashboard/cart"

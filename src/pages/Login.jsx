@@ -40,7 +40,7 @@ const Login = () => {
             title: "font-head font-bold text-2xls",
           },
         });
-        navigate(from);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const msg = error.message;
