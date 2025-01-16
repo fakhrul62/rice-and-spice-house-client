@@ -58,7 +58,7 @@ const OrderItemCard = ({ menu }) => {
             {name}
           </h2>
           <h2 className="fon-body text-xl text-zinc-950">
-            <span className="text-amber-400">$</span>
+            <span className="text-orange-600">$</span>
             {price}
           </h2>
         </div>

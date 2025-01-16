@@ -14,7 +14,7 @@ const PaymentHistory = () => {
       return res.data;
     },
   });
-  const totalSpent = payments.reduce((sum, item) => sum + parseInt(item.amount), 0).toFixed(2);
+  const totalSpent = payments.reduce((sum, item) => sum + parseInt(item.price), 0).toFixed(2);
   return (
     <div>
       <div className="text-center my-10">
@@ -50,7 +50,7 @@ const PaymentHistory = () => {
                   <tr key={item._id} className="hover">
                     <td>{idx + 1}</td>
                     <td className="font-semibold">{item.email}</td>
-                    <td className="font-semibold">${item.amount}</td>
+                    <td className="font-semibold">${item.price}</td>
                     <td>{item.transactionId}</td>
                     <td>{item.time}</td>
                     <td>{item.status}</td>

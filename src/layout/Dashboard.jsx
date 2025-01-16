@@ -4,7 +4,7 @@ import { BsCart4 } from "react-icons/bs";
 import { IoCalendarOutline, IoBookmarksOutline, IoExitOutline  } from "react-icons/io5";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { PiMoneyWavy, PiQuotes } from "react-icons/pi";
-import { HiArrowLeftStartOnRectangle } from "react-icons/hi2";
+import { HiArrowLeftStartOnRectangle, HiOutlineUserGroup } from "react-icons/hi2";
 import "../css/Dashboard.css";
 import useAuth from "../hooks/useAuth";
 import useCart from "../hooks/useCart";
@@ -64,7 +64,7 @@ const Dashboard = () => {
                     </NavLink>
 
                     <NavLink to="/dashboard/all-users">
-                      <PiQuotes />
+                      <HiOutlineUserGroup />
                       All Users
                     </NavLink>
                   </>
@@ -124,7 +124,7 @@ const Dashboard = () => {
                 <h2 className="text-sm text-zinc-300">{user.email}</h2>
               </div>
             </div>
-            <button type="button" className="text-white" onClick={logOut}>
+            <button type="button" className="text-white tooltip" data-tip="Logout" onClick={logOut}>
               <IoExitOutline />
             </button>
           </div>

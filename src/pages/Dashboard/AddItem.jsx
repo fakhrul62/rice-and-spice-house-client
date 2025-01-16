@@ -108,19 +108,23 @@ const AddItem = () => {
               className="input input-bordered w-full "
             />
           </label>
-          <label className="form-controlw-full ">
+          <label className="form-control w-full ">
             <div className="label">
               <span className="label-text">Photo</span>
             </div>
+            
             <input
               type="file"
-              placeholder="Photo"
+              placeholder="Photo" 
               name="photo"
               required
-              className="file-input file-input-bordered w-full "
+              className="file-input file-input-bordered w-full"
             />
           </label>
-          <label className="form-control col-span-2  w-full ">
+          <div>
+            
+          </div>
+          <label className="form-control col-span-2 w-full ">
             <div className="label">
               <span className="label-text">Recipe</span>
             </div>
@@ -129,7 +133,7 @@ const AddItem = () => {
               placeholder="Recipe"
               name="recipe"
               required
-              className="textarea  textarea-bordered w-full "
+              className="textarea textarea-bordered w-full "
             />
           </label>
 

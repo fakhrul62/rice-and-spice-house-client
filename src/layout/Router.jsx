@@ -107,7 +107,7 @@ const Router = createBrowserRouter([
           </AdminRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/menus/${params.id}`),
+          fetch(`https://rice-and-spice-house-server.vercel.app/menus/${params.id}`),
       },
       //user routes
       {

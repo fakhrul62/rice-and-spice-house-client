@@ -5,6 +5,7 @@ import useCart from "../../hooks/useCart";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import "../../css/CheckoutForm.css";
 
 const CheckOutForm = () => {
   const [error, setError] = useState("");
@@ -15,7 +16,11 @@ const CheckOutForm = () => {
   const [cart, refetch] = useCart();
   const { user } = useAuth();
   const navigate = useNavigate();
-  const totalPrice = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+  const totalPriceStr = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+  const totalPrice = parseFloat(totalPriceStr);
+  const appearance = {
+    theme: 'stripe'
+  };
 
   useEffect(() => {
     if (totalPrice) {
@@ -76,7 +81,7 @@ const CheckOutForm = () => {
       });
       const payment = {
         email: user.email,
-        amount: totalPrice,
+        price: totalPrice,
         time: new Date(),
         transactionId: paymentIntent.id,
         cartIds: cart.map((item) => item._id),
@@ -90,7 +95,7 @@ const CheckOutForm = () => {
     }
   };
   return (
-    <form onSubmit={handleSubmit} className="bg-zinc-500">
+    <form onSubmit={handleSubmit} className="bg-zinc-500" id="payment-form">
       <CardElement
         options={{
           style: {
