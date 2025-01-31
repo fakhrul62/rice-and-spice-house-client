@@ -1,26 +1,29 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import {
+  useStripe,
+  useElements,
+  PaymentElement,
+} from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
 import useAuth from "../../hooks/useAuth";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
-import "../../css/CheckoutForm.css";
 
 const CheckOutForm = () => {
-  const [error, setError] = useState("");
-  const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
+  const [error, setError] = useState("");
+  const [clientSecret, setClientSecret] = useState("");
   const axiosSecure = useAxiosSecure();
   const [cart, refetch] = useCart();
   const { user } = useAuth();
   const navigate = useNavigate();
-  const totalPriceStr = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+
+  const totalPriceStr = cart
+    .reduce((sum, item) => sum + item.price, 0)
+    .toFixed(2);
   const totalPrice = parseFloat(totalPriceStr);
-  const appearance = {
-    theme: 'stripe'
-  };
 
   useEffect(() => {
     if (totalPrice) {
@@ -34,51 +37,41 @@ const CheckOutForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!stripe || !elements) {
+      setError("Stripe is not initialized.");
       return;
     }
-    const card = elements.getElement(CardElement);
-    if (card == null) {
-      return;
-    }
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card,
-    });
-    if (error) {
-      console.log("[error]", error);
-      setError(error.message);
-    } else {
-      console.log("[PaymentMethod]", paymentMethod);
-      setError("");
-    }
-    //confirm payment
-    const { paymentIntent, error: confirmError } =
-      await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: card,
+
+    // Confirm the payment using the PaymentElement
+    const { error, paymentIntent } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        payment_method_data: {
           billing_details: {
             name: user.displayName || "Anonymous",
-            email: user.email || "anonymous@mail.com ",
+            email: user.email || "anonymous@mail.com",
           },
         },
-      });
-    if (confirmError) {
-      console.log("confirm error", confirmError);
-    } else {
-      console.log("payment intent", paymentIntent);
-    }
-    if (paymentIntent.status === "succeeded") {
+      },
+      redirect: "if_required", // Prevent redirect and handle everything in-app
+    });
+
+    if (error) {
+      console.error("Payment Error:", error.message);
+      setError(error.message);
+    } else if (paymentIntent) {
+      console.log("Payment Intent:", paymentIntent);
+
+      // Show success alert and navigate to payment history
       Swal.fire({
         title: "Payment Successful",
         icon: "success",
         iconColor: "#f4ec11",
-        html: `Thank you for your payment. <span><br></span> Your Transaction ID: <b>${paymentIntent.id}</b>.`,
-        customClass: {
-          confirmButton: "bg-amber-400 text-zinc-800 font-body px-32",
-          title: "font-head font-bold text-2xls",
-        },
+        html: `Transaction ID: <b>${paymentIntent.id}</b>`,
       });
+
+      // Save payment details to the server
       const payment = {
         email: user.email,
         price: totalPrice,
@@ -88,39 +81,31 @@ const CheckOutForm = () => {
         menuItemIds: cart.map((item) => item.menuId),
         status: "pending",
       };
+
       const res = await axiosSecure.post("/payments", payment);
-      console.log("payment saved", res.data);
+      console.log("Payment saved:", res.data);
+
       refetch();
       navigate("/dashboard/payment-history");
     }
   };
+
   return (
-    <form onSubmit={handleSubmit} className="bg-zinc-500" id="payment-form">
-      <CardElement
-        options={{
-          style: {
-            base: {
-              fontSize: "16px",
-              backgroundColor: "#111111",
-              color: "#ffffff",
-              "::placeholder": {
-                color: "#ffffff",
-              },
-            },
-            invalid: {
-              color: "#9e2146",
-            },
-          },
-        }}
-      ></CardElement>
+    <form
+      onSubmit={handleSubmit}
+      className="bg-zinc-800 p-6 rounded-lg shadow-md max-w-lg mx-auto"
+    >
+      <div className="mb-4 *:text-white">
+        <PaymentElement />
+      </div>
       <button
         type="submit"
         disabled={!stripe || !clientSecret}
-        className="bg-amber-400 hover:bg-zinc-900 hover:text-amber-400 rounded-full text-lg px-6 py-3 "
+        className="bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-full text-lg px-6 py-3 w-full"
       >
         Pay
       </button>
-      <p className="text-red-600">{error}</p>
+      {error && <p className="text-red-500 mt-3">{error}</p>}
     </form>
   );
 };
